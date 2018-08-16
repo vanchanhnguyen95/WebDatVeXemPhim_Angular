@@ -1,0 +1,36 @@
+.layout{
+    background-image: url(../../../assets/img/moviez-bg-1.jpg);
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+}
+.mau-icon{
+    color:  #ce335d;
+}
+.phim-thang > ul{
+    border-bottom: #ce335d 1px solid;
+}
+
+.phim-thang > ul> li> a{
+    color: #fafafa;
+    /* background-color: #170006; */
+    font-size: 20px;
+    background-color: rgba(192,192,192, 0.1);
+    border: none;
+}
+.phim-thang > ul> li> a{
+    text-decoration: none;
+    /* border-bottom: #ce335d 4px solid; */
+    display: inline;
+    color: #fafafa;
+}
+.phim-thang > ul > li:hover{
+    border-bottom: #ce335d 4px solid;
+}
+.phim-thang > ul > li:focus{
+    border-bottom: #ce335d 4px solid;
+}
+.phim-thang > ul> li>a:focus {
+    background-color: #170006;
+    border-bottom: #ce335d 4px solid;
+}

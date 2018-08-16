@@ -1,0 +1,56 @@
+
+
+<form #formNguoiDung="ngForm" (ngSubmit)="LuuNguoiDung()" class="">
+
+  <div class="form-group">
+    <label for="TaiKhoan">Tài khoản</label>
+    <input type="text" class="form-control" id="TaiKhoan" name="TaiKhoan" placeholder="Tài khoản" disabled [(ngModel)]="nguoiDung.TaiKhoan"
+      #TaiKhoan="ngModel" [ngClass]="{'is-invalid': TaiKhoan.errors && TaiKhoan.touched}" required minlength="4">
+
+    <div [hidden]="!TaiKhoan.errors?.required" class="invalid-feedback">
+      <h6>Bạn chưa nhập Tài khoản!</h6>
+    </div>
+    <div [hidden]="!TaiKhoan.errors?.minlength" class="invalid-feedback">
+      <h6>Tài khoản phải có ít nhất 4 ký tự!</h6>
+    </div>
+  </div>
+
+  <!-- Họ tên -->
+  <div class="form-group">
+    <label for="HoTen">Họ tên</label>
+    <input type="text" class="form-control" id="HoTen" name="HoTen" placeholder="Họ tên" [(ngModel)]="nguoiDung.HoTen" #HoTen="ngModel"
+      [ngClass]="{'is-invalid': HoTen.errors && HoTen.touched}" required>
+
+    <div [hidden]="!HoTen.errors?.required" class="invalid-feedback">
+      <h6>Bạn chưa nhập Họ tên!</h6>
+    </div>
+  </div>
+  <!-- Email -->
+  <div class="form-group">
+    <label for="Email"> Email</label>
+    <input type="email" class="form-control" id="Email" name="Email" placeholder="Email" [(ngModel)]="nguoiDung.Email" #Email="ngModel"
+      [ngClass]="{'is-invalid': Email.errors && Email.touched}" required pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?">
+
+    <div [hidden]="!Email.errors?.required" class="invalid-feedback">
+      <h6>Bạn chưa nhập Email!</h6>
+    </div>
+    <div [hidden]="!Email.errors?.pattern" class="invalid-feedback">
+      <h6>Email không không đúng định dạng!</h6>
+    </div>
+  </div>
+  <!-- Số điện thoại -->
+  <div class="form-group">
+    <label for="SoDT">Số điện thoại</label>
+    <input type="text" class="form-control" id="SoDT" name="SoDT" placeholder="Số điện thoại" [(ngModel)]="nguoiDung.SoDT" #SoDT="ngModel"
+      [ngClass]="{'is-invalid': SoDT.errors && SoDT.touched}" required>
+
+    <div [hidden]="!SoDT.errors?.required" class="invalid-feedback">
+      <h6>Số điện thoại không được để trống!</h6>
+    </div>
+  </div>
+
+  <!-- Buttons -->
+  <div class="form-group text-right">
+    <button [disabled]="!formNguoiDung.form.valid" type="submit" class="btn btn-warning font-weight-bold text-white">Xác nhận</button>
+  </div>
+</form>

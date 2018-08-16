@@ -1,0 +1,118 @@
+<div class="bg-dark">
+    <app-trangchu-header></app-trangchu-header>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-7 col-md-12 pb-2">
+            <h3 class="font-weight-bold text-uppercase text-center">Chọn ghế tương ứng với Vé</h3>
+            <div class="text-center pt-3 pb-5">
+                <h5 class="font-weight-bold text-uppercase">GHẾ</h5>
+                <img src="../../../assets/img/ScreenForSeating_450.png" alt="">
+            </div>
+            <div class="text-center">
+                <app-ghe (eventDatGhe)="DatGhe($event)" (click)="tinhtong()" *ngFor="let ghe of DanhSachGhe; let i=index;" [ghe]="ghe">
+                    <ng-container *ngIf="(i+1) % 12 === 0">
+
+                        <br />
+                    </ng-container>
+                </app-ghe>
+                <div class="justify-content-center d-flex pt-2">
+                    <div class="d-flex pt-3">
+                        <div class="ghe gheChuaDat"></div>
+                        <p class="pt-2">Ghế chưa đặt</p>
+                    </div>
+                    <div class="d-flex pt-3">
+                        <div class="ghe gheDangDat"></div>
+                        <p class="pt-2">Ghế đang đặt</p>
+                    </div>
+                    <div class="d-flex pt-3">
+                        <div class="ghe gheDaDat"></div>
+                        <p class="pt-2">Ghế đã đặt</p>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h4 class="font-weight-bold text-uppercase">Danh sách ghế được chọn ({{DanhSachGheDaDat.length}})
+                    </h4>
+                    <span *ngFor="let ghe of DanhSachGheDaDat" class="d-flex justify-content-center">
+                        Ghế {{ghe.MaGhe}} - {{ghe.GiaVe}} đ
+                    </span>
+                    <h4 class="font-weight-bold text-uppercase  pr-5 ml-5">Tiền Vé: {{tienVe | number}} đ</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5 col-md-12 ">
+            <h3 class="font-weight-bold text-uppercase pl-2 ml-0 pb-3 text-center">Chọn Combo kèm theo</h3>
+
+            <div class="row pl-2 justify-content-center">
+                <app-san-pham (themGioHang)=ThemGioHang($event) (botGioHang)=BotGioHang($event) [sanpham]="sp" style="padding: 1%;" *ngFor="let sp of DanhSachSanPham"></app-san-pham>
+            </div>
+
+            <table class="table table-bordered table-secondary">
+                <thead>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let sp of gioHang">
+                        <td>{{sp.TenSP}}</td>
+                        <td>{{sp.DonGia | number}} Đ</td>
+                        <td>{{sp.SoLuong | number }}</td>
+                        <td>{{sp.DonGia * sp.SoLuong | number}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4 class="font-weight-bold text-uppercase text-center">Tiền Combo: {{tongTien |number }} đ</h4>
+            <h3 class="font-weight-bold text-uppercase text-warning text-center">Tổng tiền: {{tienVe + tongTien | number}} đ</h3>
+
+            <div class="text-center">
+                <h1 class="btn btn-success font-weight-bold text-white text-uppercase" data-toggle="modal" data-target="#exampleModal"> Xem hóa đơn</h1>
+                <h1 (click)="DatVe(); reset()" class="btn btn-danger font-weight-bold pl-5 pr-5 text-uppercase" [routerLink]="['/trangchu']">Đặt vé</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Hóa đơn -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title font-weight-bold text-center text-warning" id="exampleModalLabel">HÓA ĐƠN XEM PHIM</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered table-secondary">
+                    <thead>
+                        <th>#</th>
+                        <th>Giá</th>
+                        <th>Số lượng</th>
+                        <th>Thành tiền</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Vé xem</td>
+                            <td>75,000 </td>
+                            <td>{{DanhSachGheDaDat.length}}</td>
+                            <td>{{tienVe | number}} </td>
+                        </tr>
+                        <tr *ngFor="let sp of gioHang">
+                            <td>{{sp.TenSP}}</td>
+                            <td>{{sp.DonGia | number}}</td>
+                            <td>{{sp.SoLuong | number }}</td>
+                            <td>{{sp.DonGia * sp.SoLuong | number}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3 class="font-weight-bold text-uppercase text-warning pl-2">Tổng tiền: {{tienVe + tongTien | number}} đ</h3>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="pt-5">
+    <app-footer></app-footer>
+</div>

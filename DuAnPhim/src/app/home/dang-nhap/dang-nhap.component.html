@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center">
+
+      <form class="pt-5" #formDangNhap="ngForm" (ngSubmit)="DangNhap(formDangNhap.value)">
+        <h3 class=" text-uppercase font-weight-bold text-secondary text-success text-center">
+          ĐĂNG NHẬP
+        </h3>
+
+        <!-- Tài khoản -->
+        <div class="form-group pb-2">
+          <label for="Tài khoản" class="pb-0 mb-0 font-weight-light">Tài khoản:</label>
+          <input type="text" class="form-control " id="TaiKhoan" name="TaiKhoan" placeholder="Tài khoản" ngModel #TaiKhoan="ngModel"
+            [ngClass]="{'is-invalid': TaiKhoan.errors && TaiKhoan.touched}" required>
+
+          <div [hidden]="!TaiKhoan.errors?.required" class="invalid-feedback">
+            <h6>Tài khoản không được để trống!</h6>
+          </div>
+        </div>
+
+        <!-- Mật khẩu -->
+        <div class="form-group">
+          <label for="MatKhau" class="pb-0 mb-0 font-weight-light">Mật khẩu:</label>
+          <input type="password" class="form-control" id="MatKhau" name="MatKhau" placeholder="Mật khẩu" ngModel #MatKhau="ngModel"
+            [ngClass]="{'is-invalid': MatKhau.errors && MatKhau.touched}" required>
+
+          <div [hidden]="!MatKhau.errors?.required" class="invalid-feedback">
+            <h6>Mật khẩu không được để trống!</h6>
+          </div>
+        </div>
+
+        <div [hidden]="!loginFail" class="login-fail-message">
+          <h6>Tài khoản hoặc mật khẩu không đúng!</h6>
+        </div>
+        <div class=" text-center pt-3">
+          <button class=" btn btn-success " [disabled]="!formDangNhap.form.valid"> Đăng nhập </button>
+        </div>
+
+        <div class="pt-3">
+          <span class=""> Chưa có tài khoản?</span>
+          <a [routerLink]="['/dangky']" class="text-warning font-weight-bold"> Đăng ký tại đây!</a>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>

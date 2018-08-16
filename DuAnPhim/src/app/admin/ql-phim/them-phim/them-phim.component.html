@@ -1,0 +1,99 @@
+<!--
+            <form class="font-weight-bold" #fThemPhim='ngForm' (ngSubmit)="ThemPhim(fThemPhim.value, Image.files )">
+
+                <div class="form-group">
+                    <label class="mb-0">Mô tả</label>
+                    <textarea required id="" name="MoTa" class="form-control" cols="30" rows="2" #MoTa="ngModel" ngModel></textarea>
+                </div>
+                <div class="form-group">
+                    <label required class="mb-0">Hình Ảnh</label>
+                    <input #HinhAnh type="file" name="HinhAnh" id="" class="form-control" placeholder="">
+                </div>
+
+                <div class="form-group">
+                    <label class="mb-0">Trailer phim</label>
+                    <input required type="text" name="Trailer" id="" class="form-control" placeholder="" #Trailer="ngModel" ngModel>
+                    <div *ngIf="Trailer.errors && (Trailer.dirty || Trailer.touched)">
+                        <div class="text text-danger alert alert-danger" *ngIf="Trailer.errors.required">
+                            Không được bỏ trống !
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="mb-0">Ngày khởi chiếu</label>
+                    <my-date-picker required name="NgayKhoiChieu" id="NgayKhoiChieu" ngModel #NgayKhoiChieu="ngModel"></my-date-picker>
+                </div>
+                <div class="form-group">
+                    <label class="mb-0">Đánh giá</label>
+                    <input required type="number" name="DanhGia" id="" class="form-control" placeholder="" #DanhGia="ngModel" ngModel>
+                    <div *ngIf="DanhGia.errors && (DanhGia.dirty || DanhGia.touched)">
+                        <div class="text text-danger alert alert-danger" *ngIf="DanhGia.errors.required">
+                            Không được bỏ trống !
+                        </div>
+                    </div>
+                </div>
+                <button *ngIf="!fThemPhim.submitted" [disabled]="fThemPhim.invalid" type="submit" class="btn btn-success form-control font-weight-bold" [routerLink]="['/admin/qlphim']">THÊM PHIM</button>
+            </form>
+ -->
+
+
+<div class="container pb-5">
+    <div class="row justify-content-center">
+        <div class="col-7 bg-white">
+            <div class="justify-content-center text-center">
+                <a style="color: black; font-size: 30px;" class=" text-center font-weight-bold text-success" [routerLink]="['/admin/themphim']">
+                    <i class="fa fa-angellist mr-2 font-weight-bold"></i>Admin - THÊM PHIM MỚI</a>
+            </div>
+            <form #fThemPhim='ngForm' (ngSubmit)="ThemPhim(fThemPhim.value, Image.files )">
+
+                <div class="form-group">
+                    <label class="mb-0">Mã phim</label>
+                    <input required type="text" name="MaPhim" id="" class="form-control" placeholder="" #MaPhim="ngModel" ngModel>
+                    <div *ngIf="MaPhim.errors && (MaPhim.dirty || MaPhim.untouched || MaPhim.touched)">
+                        <div class="text text-danger alert alert-danger" *ngIf="MaPhim.errors.required">
+                            Không được bỏ trống !
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="mb-0">Tên phim</label>
+                    <input required type="text" name="TenPhim" id="" class="form-control" placeholder="" #TenPhim="ngModel" ngModel>
+                    <div *ngIf="TenPhim.errors && (TenPhim.dirty || TenPhim.untouched || TenPhim.touched)">
+                        <div class="text text-danger alert alert-danger" *ngIf="TenPhim.errors.required">
+                            Không được bỏ trống !
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Mô tả</label>
+                    <textarea id="" name="MoTa" class="form-control" cols="30" rows="2" #MoTa="ngModel" ngModel></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="">Hình ảnh</label>
+                    <input #Image type="file" name="" id="" class="form-control" placeholder="">
+                </div>
+
+                <div class="form-group">
+                    <label for="">Trailer phim</label>
+                    <input type="text" name="Trailer" id="" class="form-control" placeholder="" #Trailer="ngModel" ngModel>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Ngày khởi chiếu</label>
+                    <my-date-picker name="ReleaseDate" id="ReleaseDate" ngModel #ReleaseDate='ngModel'></my-date-picker>
+
+                    <!-- <input type="date" #date name="ReleaseDate" ngModel class="form-control"> -->
+                </div>
+                <div class="form-group">
+                    <label for="">Đánh giá</label>
+                    <input type="number" name="DanhGia" id="" class="form-control" placeholder="" #DanhGia="ngModel" ngModel>
+                </div>
+                <button type="submit" class="btn btn-success">Thêm phim mới</button>
+            </form>
+
+        </div>
+    </div>
+</div>

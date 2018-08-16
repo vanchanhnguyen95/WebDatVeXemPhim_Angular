@@ -1,0 +1,608 @@
+<div class="chi-tiet-phim ">
+    <app-trangchu-header></app-trangchu-header>
+    <div class="container justify-content-center ">
+        <div class="row">
+            <div class="col xem-trailer trailer-film d-flex align-items-center justify-content-center">
+                <div class="text-white font-weight-bold">
+                    <div class="icon-trailer text-center d-flex justify-content-center">
+                        <i class="fa fa-film icon-xem font-weight-bold" data-toggle="modal" data-target="#exampleModal"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-weight-bold">XEM TRAILER PHIM</h3>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="container pt-5 pb-5" *ngIf="load">
+        <div class="row">
+            <div class="col-lg-4 col-md-12 d-flex flex-column justify-content-center pr-0">
+                <div class="text-center">
+                    <img class="img-fluid" [(src)]="phim.HinhAnh" alt="">
+                </div>
+                <div class="phim-start text-warning d-flex justify-content-center">
+                    <div class="pl-2 pr-2 start mt-1 mb-1">
+                        <i class="fa fa-star text-white"></i>
+                    </div>
+                    <h1 class="font-weight-bold text-secondary pl-1">5.0</h1>
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-12 p-0 m-0">
+                <h2 class="text-white text-uppercase font-weight-bold">{{phim.TenPhim }}</h2>
+                <div class="text-white row font-weight-bold">
+                    <div class="col-lg-3">
+                        <p class="m-0 p-0">Rạp chiếu</p>
+                    </div>
+                    <div class="col-lg-3">
+                        <p class="m-0 p-0 text-secondary font-weight-bold"> Cyber</p>
+                    </div>
+                </div>
+                <div class="text-white row font-weight-bold">
+                    <div class="col-lg-3">
+                        <p class="m-0 p-0">Mã phim</p>
+                    </div>
+                    <div class="col-lg-9">
+                        <p class="m-0 p-0 text-secondary font-weight-bold"> 00{{phim.MaPhim}}</p>
+                    </div>
+                </div>
+                <div class="text-white row font-weight-bold">
+                    <div class="col-lg-3">
+                        <p class="m-0 p-0">Đánh giá</p>
+                    </div>
+                    <div class="col-lg-9">
+                        <p class="m-0 p-0 text-secondary font-weight-bold">{{phim.DanhGia}}</p>
+                    </div>
+                </div>
+                <div class="text-white row font-weight-bold">
+                    <div class="col-lg-3">
+                        <p class="m-0 p-0 ">Ngày khởi chiếu</p>
+                    </div>
+                    <div class="col-lg-9">
+                        <p class="m-0 p-0 text-secondary ">{{phim.NgayKhoiChieu | date : 'dd/MM/yyyy'}}</p>
+                    </div>
+                </div>
+                <div class="text-white row font-weight-bold">
+                    <div class="col-lg-3">
+                        <p class="m-0 p-0">Thời lượng</p>
+                    </div>
+                    <div class="col-lg-9">
+                        <p class="m-0 p-0 text-secondary ">120 phút</p>
+                    </div>
+                </div>
+                <div class="text-white row font-weight-bold">
+                    <div class="col-12">
+                        <hr class="bg-info">
+                        <p class="m-0 p-0 text-secondary">{{phim.MoTa}}</p>
+                        <hr class="bg-info ">
+                    </div>
+                </div>
+                <div class="text-white row ">
+                    <div class="col-12">
+                        <button type="button" class="btn btn-primary mr-1 font-weight-bold text-uppercase" data-toggle="modal" data-target="#exampleModal">
+                            Xem Trailer
+                        </button>
+                        <!-- <button type="button" class="btn btn-danger font-weight-bold text-uppercase" data-toggle="modal" data-target="#exampleModal">
+                            Đặt vé ngay
+                        </button> -->
+                        <!-- <a class="btn btn-danger" [routerLink]="['/datve']" [queryParams]="{MaLichChieu:LichChieu.MaLichChieu}">Đặt vé</a> -->
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="">
+                    <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="close pb-1" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <div class="embed-responsive embed-responsive-16by9 pt-3 pb-3">
+                                        <iframe class="embed-responsive-item" [src]="iframe" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="container muave pb-5 pt-5">
+        <div class="row">
+            <div class="col">
+                <div class="muave-tieude">
+                    <h1 class="text-center font-weight-bold text-white">HỆ THỐNG RẠP CHIẾU</h1>
+                </div>
+                <div class="tab-control pb-2">
+                    <ul class="nav nav-tabs justify-content-center align-items-center lst-cinema pb-5">
+                        <li class="active">
+                            <a data-toggle="tab" href="#home">
+                                <div class="cinema-logo text-center">
+                                    <img src="../../../assets/img/cinema-logo-cns.png" alt="">
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-toggle="tab" href="#menu1">
+                                <div class="cinema-logo text-center">
+                                    <img src="../../../assets/img/cinema-logo-cgv.png" alt="">
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-toggle="tab" href="#menu2">
+                                <div class="cinema-logo text-center">
+                                    <img src="../../../assets/img/cinema-logo-cinex.png" alt="">
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-toggle="tab" href="#menu3">
+                                <div class="cinema-logo text-center">
+                                    <img src="../../../assets/img/cinema-logo-bhd.png" alt="">
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-toggle="tab" href="#menu4">
+                                <div class="cinema-logo text-center">
+                                    <img src="../../../assets/img/cinema-logo-mega.png" alt="">
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-toggle="tab" href="#menu5">
+                                <div class="cinema-logo text-center">
+                                    <img src="../../../assets/img/cinema-logo-beta.png" alt="">
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content ml-5 pl-3">
+            <div id="home" class="tab-pane fade in active ">
+                <div class="float-left font-weight-bold ml-2 mr-2">
+                    <div class="pb-3 rap-chieu1">
+                        <div class="float-left">
+                            <img class="float-left cinema-chitiet" src="../../../assets/img/cns-haibatrung.jpg" alt="">
+                        </div>
+                        <div class="float-left pl-3">
+                            <h6>
+                                <span class="text-danger">CNS</span> - Hai Bà Trưng</h6>
+                            <p class="pb-0 mb-0">135 Hai Bà Trưng, Bến Nghé, Q.1</p>
+                            <a href="#" class="pt-0 pt-0 text-danger">chi tiết</a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="rap-chieu2">
+                        <div class="float-left">
+                            <img class="float-left cinema-chitiet" src="../../../assets/img/cns-quocthanh.jpg" alt="">
+                        </div>
+                        <div class="float-left pl-3">
+                            <h6>CNS - Quốc Thanh</h6>
+                            <p class="pb-0 mb-0">271 Nguyễn Trãi, Q.1</p>
+                            <a href="#" class="pt-0 pt-0">chi tiết</a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="float-left pl-3  pr-0 text-white">
+                    <div class="">
+                        <div class="d-flex m-0 p-0">
+                            <ul class="list-unstyled m-0" *ngFor="let lichChieu of phim.LichChieu">
+                                <li class="datve pb-2">
+                                    <h4 class="mr-3 font-weight-bold">{{lichChieu.NgayChieuGioChieu | date : 'dd/MM'}}</h4>
+                                    <div class="link-dat">
+                                        <a class="btn btn-danger" [routerLink]="['/datve']" [queryParams]="{MaLichChieu:lichChieu.MaLichChieu}">Đặt vé</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="pt-0 mt-0">
+                        <div class="float-left">
+                            <img class="img-fluid cinema-chitiet2 pt-0 mt-0" [(src)]="phim.HinhAnh" alt="">
+                        </div>
+                        <div class="float-left">
+                            <h4 class="pl-2">
+                                <span class="badge badge-warning">{{phim.DanhGia}}</span>{{phim.TenPhim}}</h4>
+                            <h4 class="text-secondary pl-2 font-weight-bold">120 phút - Hot Phim - IMdb 9.0</h4>
+                            <h5 class="text-secondary pl-2 font-weight-bold">Khởi chiếu {{phim.NgayKhoiChieu | date : 'dd/MM/yyyy'}}</h5>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="d-flex pt-2">
+                            <div>
+                                <h4>
+                                    <span class="badge badge-secondary">3D</span>
+                                </h4>
+                            </div>
+                            <div class="pl-2">
+                                <h4 class="font-weight-bold">Xuất chiếu - 10:00
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+
+            <div id="menu1" class="tab-pane fade">
+                <div class="float-left font-weight-bold ml-2 mr-2">
+                    <div class="pb-3 rap-chieu1">
+                        <div class="float-left">
+                            <img class="float-left cinema-chitiet" src="../../../assets/img/cgv-suvanhanh.jpg" alt="">
+                        </div>
+                        <div class="float-left pl-3">
+                            <h6>
+                                <span class="text-danger">CGV</span> - Sư Vạn Hạnh</h6>
+                            <p class="pb-0 mb-0">T6 Vạn Hạnh Mall, 11 Sư Vạn Hạnh, Quận 10</p>
+                            <a href="#" class="pt-0 pt-0 text-danger">chi tiết</a>
+                        </div>
+                        <div class="clearfix">
+
+                        </div>
+                    </div>
+
+                    <div class="rap-chieu2">
+                        <div class="float-left">
+                            <img class="float-left cinema-chitiet" src="../../../assets/img/cgv-golden.jpg" alt="">
+                        </div>
+                        <div class="float-left pl-3">
+                            <h6>CGV - Golden Plaza</h6>
+                            <p class="pb-0 mb-0">922 Nguyễn Trãi, P. 14, Q. 5</p>
+                            <a href="#" class="pt-0 pt-0">chi tiết</a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="float-left pl-3  pr-0 text-white">
+                    <div class="">
+                        <div class="d-flex m-0 p-0">
+                            <ul class="list-unstyled m-0" *ngFor="let lichChieu of phim.LichChieu">
+                                <li class="datve pb-2">
+                                    <h4 class="mr-3 font-weight-bold">{{lichChieu.NgayChieuGioChieu | date : 'dd/MM'}}</h4>
+                                    <div class="link-dat">
+                                        <a class="btn btn-danger" [routerLink]="['/datve']" [queryParams]="{MaLichChieu:lichChieu.MaLichChieu}">Đặt vé</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="pt-0 mt-0">
+                        <div class="float-left">
+                            <img class="img-fluid cinema-chitiet2 pt-0 mt-0" [(src)]="phim.HinhAnh" alt="">
+                        </div>
+                        <div class="float-left">
+                            <h4 class="pl-2">
+                                <span class="badge badge-warning">{{phim.DanhGia}}</span>{{phim.TenPhim}}</h4>
+                            <h4 class="text-secondary pl-2 font-weight-bold">120 phút - Hot Phim - IMdb 9.0</h4>
+                            <h5 class="text-secondary pl-2 font-weight-bold">Khởi chiếu {{phim.NgayKhoiChieu | date : 'dd/MM/yyyy'}}</h5>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="d-flex pt-2">
+                            <div>
+                                <h4>
+                                    <span class="badge badge-secondary">3D</span>
+                                </h4>
+                            </div>
+                            <div class="pl-2">
+                                <h4 class="font-weight-bold">Xuất chiếu - 10:00
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+
+            <div id="menu2" class="tab-pane fade">
+                <div class="float-left">
+                    <div class="pb-3 rap-chieu1">
+                        <div class="float-left">
+                            <img class="float-left cinema-chitiet" src="../../../assets/img/cinebox-ly-chinh-thang.jpg" alt="">
+                        </div>
+                        <div class="float-left pl-3">
+                            <h6>
+                                <span class="text-danger">Cinebox </span> - Lý Chính Thắng</h6>
+                            <p class="pb-0 mb-0">212 Lý Chính Thắng, Q.3</p>
+                            <a href="#" class="pt-0 pt-0 text-danger">chi tiết</a>
+                        </div>
+                        <div class="clearfix">
+
+                        </div>
+                    </div>
+
+                    <div class="rap-chieu2">
+                        <div class="float-left">
+                            <img class="float-left cinema-chitiet" src="../../../assets/img/cinebox-ly-chinh-thang.jpg" alt="">
+                        </div>
+                        <div class="float-left pl-3">
+                            <h6>Cinebox - Lý Chính Thắng</h6>
+                            <p class="pb-0 mb-0">212 Lý Chính Thắng, Q.3</p>
+                            <a href="#" class="pt-0 pt-0">chi tiết</a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="float-right pr-5 mr-5 text-white">
+                    <div class="">
+                        <div class="d-flex m-0 p-0">
+                            <ul class="list-unstyled m-0" *ngFor="let lichChieu of phim.LichChieu">
+                                <li class="datve pb-2">
+                                    <h4 class="mr-3 font-weight-bold">{{lichChieu.NgayChieuGioChieu | date : 'dd/MM'}}</h4>
+                                    <div class="link-dat">
+                                        <a class="btn btn-danger" [routerLink]="['/datve']" [queryParams]="{MaLichChieu:lichChieu.MaLichChieu}">Đặt vé</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="pt-0 mt-0">
+                        <div class="float-left">
+                            <img class="img-fluid cinema-chitiet2 pt-0 mt-0" [(src)]="phim.HinhAnh" alt="">
+                        </div>
+                        <div class="float-left">
+                            <h4 class="pl-2">
+                                <span class="badge badge-warning">{{phim.DanhGia}}</span>{{phim.TenPhim}}</h4>
+                            <h4 class="text-secondary pl-2 font-weight-bold">120 phút - Hot Phim - IMdb 9.0</h4>
+                            <h5 class="text-secondary pl-2 font-weight-bold">Khởi chiếu {{phim.NgayKhoiChieu | date : 'dd/MM/yyyy'}}</h5>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="d-flex pt-2">
+                            <div>
+                                <h4>
+                                    <span class="badge badge-secondary">3D</span>
+                                </h4>
+                            </div>
+                            <div class="pl-2">
+                                <h4 class="font-weight-bold">Xuất chiếu - 10:00
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+
+            <div id="menu3" class="tab-pane fade">
+                <div class="float-left">
+                    <div class="pb-3 rap-chieu1">
+                        <div class="float-left">
+                            <img class="float-left cinema-chitiet" src="../../../assets/img/bhd-bitexco.jpg" alt="">
+                        </div>
+                        <div class="float-left pl-3">
+                            <h6>
+                                <span class="text-danger">BHD Star Cineplex</span> - Bitexco</h6>
+                            <p class="pb-0 mb-0">L3-Bitexco Icon 68, 2 Hải Triều, Q.1</p>
+                            <a href="#" class="pt-0 pt-0 text-danger">chi tiết</a>
+                        </div>
+                        <div class="clearfix">
+
+                        </div>
+                    </div>
+
+                    <div class="rap-chieu2">
+                        <div class="float-left">
+                            <img class="float-left cinema-chitiet" src="../../../assets/img/bhd-vincom.jpg" alt="">
+                        </div>
+                        <div class="float-left pl-3">
+                            <h6>BHD Star Cineplex - Vincom</h6>
+                            <p class="pb-0 mb-0">L5-Megamall, 159 XL Hà Nội, Q.2</p>
+                            <a href="#" class="pt-0 pt-0">chi tiết</a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="float-right pr-5 mr-5 text-white">
+                    <div class="">
+                        <div class="d-flex m-0 p-0">
+                            <ul class="list-unstyled m-0" *ngFor="let lichChieu of phim.LichChieu">
+                                <li class="datve pb-2">
+                                    <h4 class="mr-3 font-weight-bold">{{lichChieu.NgayChieuGioChieu | date : 'dd/MM'}}</h4>
+                                    <div class="link-dat">
+                                        <a class="btn btn-danger" [routerLink]="['/datve']" [queryParams]="{MaLichChieu:lichChieu.MaLichChieu}">Đặt vé</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="pt-0 mt-0">
+                        <div class="float-left">
+                            <img class="img-fluid cinema-chitiet2 pt-0 mt-0" [(src)]="phim.HinhAnh" alt="">
+                        </div>
+                        <div class="float-left">
+                            <h4 class="pl-2">
+                                <span class="badge badge-warning">{{phim.DanhGia}}</span>{{phim.TenPhim}}</h4>
+                            <h4 class="text-secondary pl-2 font-weight-bold">120 phút - Hot Phim - IMdb 9.0</h4>
+                            <h5 class="text-secondary pl-2 font-weight-bold">Khởi chiếu {{phim.NgayKhoiChieu | date : 'dd/MM/yyyy'}}</h5>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="d-flex pt-2">
+                            <div>
+                                <h4>
+                                    <span class="badge badge-secondary">3D</span>
+                                </h4>
+                            </div>
+                            <div class="pl-2">
+                                <h4 class="font-weight-bold">Xuất chiếu - 10:00
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+
+            <div id="menu4" class="tab-pane fade">
+                <div class="float-left">
+                    <div class="pb-3 rap-chieu1">
+                        <div class="float-left">
+                            <img class="float-left cinema-chitiet" src="../../../assets/img/mega-ao-thang.jpg" alt="">
+                        </div>
+                        <div class="float-left pl-3">
+                            <h6>
+                                <span class="text-danger">MegaGS</span> - Cao Thắng</h6>
+                            <p class="pb-0 mb-0">19 Cao Thắng, Q.3</p>
+                            <a href="#" class="pt-0 pt-0 text-danger">chi tiết</a>
+                        </div>
+                        <div class="clearfix">
+
+                        </div>
+                    </div>
+
+                    <div class="rap-chieu2">
+                        <div class="float-left">
+                            <img class="float-left cinema-chitiet" src="../../../assets/img/mega-ao-thang.jpg" alt="">
+                        </div>
+                        <div class="float-left pl-3">
+                            <h6>MegaGS - Cao Thắng</h6>
+                            <p class="pb-0 mb-0">19 Cao Thắng, Q.3</p>
+                            <a href="#" class="pt-0 pt-0">chi tiết</a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="float-right pr-5 mr-5 text-white">
+                    <div class="">
+                        <div class="d-flex m-0 p-0">
+                            <ul class="list-unstyled m-0" *ngFor="let lichChieu of phim.LichChieu">
+                                <li class="datve pb-2">
+                                    <h4 class="mr-3 font-weight-bold">{{lichChieu.NgayChieuGioChieu | date : 'dd/MM'}}</h4>
+                                    <div class="link-dat">
+                                        <a class="btn btn-danger" [routerLink]="['/datve']" [queryParams]="{MaLichChieu:lichChieu.MaLichChieu}">Đặt vé</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="pt-0 mt-0">
+                        <div class="float-left">
+                            <img class="img-fluid cinema-chitiet2 pt-0 mt-0" [(src)]="phim.HinhAnh" alt="">
+                        </div>
+                        <div class="float-left">
+                            <h4 class="pl-2">
+                                <span class="badge badge-warning">{{phim.DanhGia}}</span>{{phim.TenPhim}}</h4>
+                            <h4 class="text-secondary pl-2 font-weight-bold">120 phút - Hot Phim - IMdb 9.0</h4>
+                            <h5 class="text-secondary pl-2 font-weight-bold">Khởi chiếu {{phim.NgayKhoiChieu | date : 'dd/MM/yyyy'}}</h5>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="d-flex pt-2">
+                            <div>
+                                <h4>
+                                    <span class="badge badge-secondary">3D</span>
+                                </h4>
+                            </div>
+                            <div class="pl-2">
+                                <h4 class="font-weight-bold">Xuất chiếu - 10:00
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+
+            <div id="menu5" class="tab-pane fade">
+                <div class="float-left">
+                    <div class="pb-3 rap-chieu1">
+                        <div class="float-left">
+                            <img class="float-left cinema-chitiet" src="../../../assets/img/beta-cao-thang.jpg" alt="">
+                        </div>
+                        <div class="float-left pl-3">
+                            <h6>
+                                <span class="text-danger">Beta Cineplex</span> - Cao Thắng</h6>
+                            <p class="pb-0 mb-0">181 Cao Thắng, P.12, Q.10, TP HCM</p>
+                            <a href="#" class="pt-0 pt-0 text-danger">chi tiết</a>
+                        </div>
+                        <div class="clearfix">
+
+                        </div>
+                    </div>
+
+                    <div class="rap-chieu2">
+                        <div class="float-left">
+                            <img class="float-left cinema-chitiet" src="../../../assets/img/beta-cao-thang.jpg" alt="">
+                        </div>
+                        <div class="float-left pl-3">
+                            <h6>Beta Cineplex - Cao Thắng</h6>
+                            <p class="pb-0 mb-0">181 Cao Thắng, P.12, Q.10, TP HCM</p>
+                            <a href="#" class="pt-0 pt-0">chi tiết</a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="float-right pr-5 mr-5 text-white">
+                    <div class="">
+                        <div class="d-flex m-0 p-0">
+                            <ul class="list-unstyled m-0" *ngFor="let lichChieu of phim.LichChieu">
+                                <li class="datve pb-2">
+                                    <h4 class="mr-3 font-weight-bold">{{lichChieu.NgayChieuGioChieu | date : 'dd/MM'}}</h4>
+                                    <div class="link-dat">
+                                        <a class="btn btn-danger" [routerLink]="['/datve']" [queryParams]="{MaLichChieu:lichChieu.MaLichChieu}">Đặt vé</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="pt-0 mt-0">
+                        <div class="float-left">
+                            <img class="img-fluid cinema-chitiet2 pt-0 mt-0" [(src)]="phim.HinhAnh" alt="">
+                        </div>
+                        <div class="float-left">
+                            <h4 class="pl-2">
+                                <span class="badge badge-warning">{{phim.DanhGia}}</span>{{phim.TenPhim}}</h4>
+                            <h4 class="text-secondary pl-2 font-weight-bold">120 phút - Hot Phim - IMdb 9.0</h4>
+                            <h5 class="text-secondary pl-2 font-weight-bold">Khởi chiếu {{phim.NgayKhoiChieu | date : 'dd/MM/yyyy'}}</h5>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="d-flex pt-2">
+                            <div>
+                                <h4>
+                                    <span class="badge badge-secondary">3D</span>
+                                </h4>
+                            </div>
+                            <div class="pl-2">
+                                <h4 class="font-weight-bold">Xuất chiếu - 10:00
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <app-footer></app-footer>
+</div>

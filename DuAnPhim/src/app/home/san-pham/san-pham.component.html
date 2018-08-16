@@ -1,0 +1,16 @@
+
+<div class="">
+    <table class="table table-dark">
+        <!-- <thead>
+        </thead> -->
+        <tbody>
+          <tr>
+            <th scope="row"><img class="" width="60" height="60" [src]="sanpham.HinhAnh" alt=" image cap"></th>
+            <td>{{sanpham.TenSP}}</td>
+            <td>{{sanpham.DonGia | number}}</td>
+            <td><p (click)="ThemSanPham(sanpham)" class="btn btn-success font-weight-bold">+</p></td>
+            <td><p (click)="BotSanPham(sanpham)" class="btn btn-danger font-weight-bold">-</p></td>
+          </tr>
+        </tbody>
+      </table>
+</div>

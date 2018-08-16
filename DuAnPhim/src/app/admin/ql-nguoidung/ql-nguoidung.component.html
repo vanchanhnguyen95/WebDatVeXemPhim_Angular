@@ -1,0 +1,155 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+
+        <div class="card">
+            <div class="card-header">
+                <div class="">
+                    <div class="text-left">
+                        <button type="button" class="btn btn-success text-uppercase font-weight-bold" data-toggle="modal" data-target="#modalNguoiDung" (click)="ThemNguoiDungModal()">
+                            <i class="fa fa-plus"></i>  Thêm người dùng
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <table *ngIf="dsNguoiDung?.length > 0; else Loading" datatable [dtOptions]="dtOptions" class="row-border hover table table-striped table-bordered table-hover table-info">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Tài khoản</th>
+                            <th>Họ tên</th>
+                            <th>Email</th>
+                            <th>Số điện thoại</th>
+                            <th>Loại người dùng</th>
+                            <th>Sửa</th>
+                            <th>Xóa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let nguoidung of dsNguoiDung">
+                            <td>{{nguoidung.TaiKhoan}}</td>
+                            <td>{{nguoidung.HoTen}}</td>
+                            <td>{{nguoidung.Email}}</td>
+                            <td>{{nguoidung.SoDT}}</td>
+                            <td>{{nguoidung.TenLoaiNguoiDung}}</td>
+                            <td class="text-center">
+                                <button type="button" 
+                                        class="btn btn-warning"
+                                        title="Cập nhật người dùng"
+                                        data-toggle="modal"
+                                        data-target="#modalNguoiDung"
+                                        (click)="CapNhatNguoiDungModal(nguoidung)">
+                                        <i class="fa fa-joomla"></i>
+                                </button>
+                            </td>
+                            <td class="text-center">
+                                <button class="btn btn-danger"
+                                        title="Xóa người dùng"
+                                        (click)="XoaNguoiDung(nguoidung.TaiKhoan)">
+                                        <i class="fa fa-eraser"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+    </div>
+</div>
+
+
+
+<!-- Modal người dùng -->
+<div class="modal fade" id="modalNguoiDung" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-warning text-uppercase ">
+                <h5 class="modal-title text-white font-weight-bold pl-5" id="exampleModalLabel">{{titleModal}}</h5>
+                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form #formNguoiDung="ngForm" (ngSubmit)="LuuNguoiDung(formNguoiDung.value)">
+                    
+                    <div class="form-group">
+                        <label for="TaiKhoan" class="text-secondary mb-0 pb-0"> Tài khoản</label>
+                        <input type="text" class="form-control" id="TaiKhoan" name="TaiKhoan"  placeholder="Tài khoản"[disabled]="!themND" [(ngModel)]="nguoiDung.TaiKhoan"
+                            #TaiKhoan="ngModel" [ngClass]="{'is-invalid': TaiKhoan.errors && TaiKhoan.touched}" required minlength="4">
+
+                        <div [hidden]="!TaiKhoan.errors?.required" class="invalid-feedback">
+                            <h6>Bạn chưa nhập Tài khoản!</h6>
+                        </div>
+                        <div [hidden]="!TaiKhoan.errors?.minlength" class="invalid-feedback">
+                            <h6>Tài khoản phải có ít nhất 4 ký tự!</h6>
+                        </div>
+                    </div>
+                    
+
+                    <div class="form-group">
+                        <label for="MatKhau" class="text-secondary mb-0 pb-0"> Mật khẩu</label>
+                        <input type="password" class="form-control" id="MatKhau" name="MatKhau" placeholder="Mật khẩu" [(ngModel)]="nguoiDung.MatKhau" #MatKhau="ngModel" [ngClass]="{'is-invalid': MatKhau.errors && MatKhau.touched}" required minlength="8">
+
+                        <div [hidden]="!MatKhau.errors?.required" class="invalid-feedback">
+                            <h6>Bạn chưa nhập Mật khẩu!</h6>
+                        </div>
+                        <div [hidden]="!MatKhau.errors?.minlength" class="invalid-feedback">
+                            <h6>Mật khẩu phải có ít nhất 8 ký tự!</h6>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="HoTen" class="text-secondary mb-0 pb-0"><i class="fa fa-address-card"></i> Họ tên</label>
+                        <input type="text" class="form-control" id="HoTen" name="HoTen" placeholder="Họ tên" [(ngModel)]="nguoiDung.HoTen" #HoTen="ngModel" [ngClass]="{'is-invalid': HoTen.errors && HoTen.touched}" required>
+
+                        <div [hidden]="!HoTen.errors?.required" class="invalid-feedback">
+                            <h6>Bạn chưa nhập Họ tên!</h6>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Email" class="text-secondary mb-0 pb-0"> Email</label>
+                        <input type="email" class="form-control" id="Email" name="Email" placeholder="Email" [(ngModel)]="nguoiDung.Email" #Email="ngModel" [ngClass]="{'is-invalid': Email.errors && Email.touched}" required pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?">
+
+                        <div [hidden]="!Email.errors?.required" class="invalid-feedback">
+                            <h6>Bạn chưa nhập Email!</h6>
+                        </div> 
+                        <div [hidden]="!Email.errors?.pattern" class="invalid-feedback">
+                            <h6>Email có dạng abc@gmail.com!</h6>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="SoDT" class="text-secondary mb-0 pb-0"> Số điện thoại</label>
+                        <input type="text" class="form-control" id="SoDT" name="SoDT" placeholder="Số điện thoại" [(ngModel)]="nguoiDung.SoDT" #SoDT="ngModel" [ngClass]="{'is-invalid': SoDT.errors && SoDT.touched}" required>
+
+                        <div [hidden]="!SoDT.errors?.required" class="invalid-feedback">
+                            <h6>Số điện thoại không được để trống!</h6>
+                        </div>
+                    </div>
+                    
+
+                    <div class="form-group">
+                        <label class="text-secondary mb-0 pb-0"> Loại người dùng</label>
+                        <select class="form-control" id="MaLoaiNguoiDung" name="MaLoaiNguoiDung" #MaLoaiNguoiDung="ngModel" [(ngModel)]="nguoiDung.MaLoaiNguoiDung" [ngClass]="{'is-invalid': MaLoaiNguoiDung.errors && MaLoaiNguoiDung.touched}" required>                                   
+                            <option *ngFor="let lnd of dsLoaiNguoiDung" [value]="lnd.MaLoaiNguoiDung">{{lnd.TenLoai}}</option>
+                        </select>
+
+                        <div [hidden]="!MaLoaiNguoiDung.errors?.required" class="invalid-feedback">
+                            <h6>Bạn chưa chọn loại người dùng!</h6>
+                        </div>
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="form-group text-right">
+                        <button [disabled]="!formNguoiDung.form.valid" type="submit" class="btn btn-danger mr-3">Lưu</button>
+                        <button type="button" class="btn btn-warning" data-dismiss="modal">Xác nhận</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

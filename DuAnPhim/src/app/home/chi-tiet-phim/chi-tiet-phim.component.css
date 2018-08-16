@@ -1,0 +1,87 @@
+.chi-tiet-phim{
+    /* -webkit-font-smoothing: antialiased; */
+    /* line-height: 26px;
+    letter-spacing: 0.05em; */
+    background-color: #12102b;
+    color: #b0ace0;;
+}
+.trailer-film{
+    width: auto;
+    height: 400px;
+    background: linear-gradient(to top, #12102b, rgba(206, 51, 93, 0.3));
+    opacity: 0.8;
+}
+.xem-trailer{
+    background-image: url(../../../assets/img/batman_arkham_city-2.jpg);
+    background-image: cover;
+    z-index: 999;
+}
+.icon-trailer{
+    font-size: 40px;
+    color: #ffff;
+}
+.icon-xem{
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    background-color: rgba(206, 51, 93, 0.9);
+    border-radius: 50%;
+    z-index: 200;
+}
+.icon-xem:hover {
+    background-color: rgba(206, 51, 93, 0.2);
+    color: rgba(206, 51, 93, 0.9);
+    border: solid 2px #fff;
+}
+.phim-start{
+    color: yellow;
+    font-size: 30px;
+}
+.phim-start> .start{
+    background-color: #fbbc05;
+}
+
+
+.cinema-logo{
+    background-color: #fff;
+    height: 90px;
+    width: 90px;
+    line-height: 90px;
+    border-radius: 50%;
+    margin: 10px;
+}
+.cinema-logo img{
+    width: 80px;
+    height: 80px;
+}
+
+.cinema-chitiet {
+    width: 70px;
+    height: 90px;
+}
+.cinema-chitiet2 {
+    width: 100px;
+    height: 120px;
+}
+
+.datve{
+    position: relative;
+}
+.link-dat{
+    position: absolute;
+    top:0;
+    display: none;
+    z-index: 10;
+}
+.datve:hover .link-dat{
+    display:block;
+}
+.lst-cinema{
+    border:none;
+}
+.rap-chieu1{
+    color: white;
+}
+.rap-chieu2{
+    opacity: 0.7;
+}

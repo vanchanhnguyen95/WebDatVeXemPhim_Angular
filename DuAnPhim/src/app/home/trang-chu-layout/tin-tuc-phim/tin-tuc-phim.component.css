@@ -1,0 +1,21 @@
+.mau-icon{
+    color:  #ce335d;
+}
+.hinh:hover{
+  background: rgba(206, 51, 93, 0.5) !important;
+  background: -webkit-linear-gradient(to right, rgba(206, 51, 93, 0.5), rgba(251, 188, 5, 0.5)) !important;
+  background: linear-gradient(to right, rgba(206, 51, 93, 0.5), rgba(251, 188, 5, 0.5)) !important;
+  z-index: 200 !important ;
+  opacity: 0.3 !important;
+  transition: all 0.5s ease-in-out;
+}
+.deals{
+  position: absolute;
+}
+.hinh-deals{
+  position: relative;
+  right: 0;
+  top: 5%;
+  display: none;
+  z-index: 100;
+}

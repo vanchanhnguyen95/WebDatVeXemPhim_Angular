@@ -1,0 +1,11 @@
+form{
+    width: 70%;
+}
+
+label{
+    font-weight: 700;
+}
+
+button:disabled{
+    cursor: no-drop;
+}

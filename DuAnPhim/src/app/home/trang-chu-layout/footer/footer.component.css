@@ -1,0 +1,10 @@
+footer{
+    background-image: url(../../../../assets/img/moviez-footer-bg.jpg);
+    color: rgba(250, 250, 250, 0.8);
+    background-color: #22252b;
+}
+.image-doitac{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}

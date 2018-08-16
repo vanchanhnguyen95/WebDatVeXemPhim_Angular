@@ -1,0 +1,59 @@
+.tabs-right {
+    border-bottom: none;
+    padding-top: 2px;
+    border-bottom: none;
+  }
+
+  .tabs-right>li {
+    float: none;
+    margin-bottom: 2px;
+  }
+
+  .tabs-right>li.active>a,
+  .tabs-right>li.active>a:hover,
+  .tabs-right>li.active>a:focus {
+     /* border-bottom: 1px solid #ddd; */
+     border-left-color: transparent;
+     /* background-color: red; */
+  }
+  .tabs-right>li>a {
+    text-decoration: none;
+    border-radius: 0 4px 4px 0;
+    margin-right: 0;
+  }
+  .tabs-right>li>a:focus {
+    background-color: red;
+  }
+  
+  .tabs-right>li>a>.d-flex >.nut-play{
+    width:40px;
+    height: 40px;
+    background-color: yellow;
+  }
+  .tabs-right>li>a:hover{
+    background-color: red !important;
+  }
+  .demo:active{
+    background-color: red !important;
+  }
+  .demo:hover{
+    background: rgba(206, 51, 93, 0.2);
+  }
+  .demo:focus{
+    background-color: red;
+  }
+  .gioi-thieu-phim{
+    background-color: #170006 !important;
+  }
+  .khung-phim{
+    border-top: 8px #ce335d solid;
+    border-bottom: 8px #ce335d solid;
+  }
+  .nut-play{
+    width: 50px;
+    height: 60px;
+    line-height: 60px;
+    background: rgba(206, 51, 93, 0.2);
+    transition: color 0.3s;
+    color: #fafafa;
+  }

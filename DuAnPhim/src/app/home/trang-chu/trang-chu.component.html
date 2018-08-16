@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row m-0 p-0">
+
+    <div class="col-lg col-md-6 col-sm-12" *ngFor="let phim of DanhSachPhim | paginate: { itemsPerPage: 4, currentPage: p }">
+      <div class="khung-ngoai m-0 p-0 ">
+        <div class=" hinh-phim">
+          <img class="" [src]="phim.HinhAnh" class="img-fluid m-0 p-0 h-100" alt="">
+        </div>
+        <h4 class="text-white pl-0 text-uppercase font-weight-bold pb-2 pt-2">{{phim.TenPhim}}</h4>
+        <p class="text-warning font-weight-bold ">Đang chiếu -
+          <i class="fa fa-star pr-1"></i>{{phim.DanhGia}}/5</p>
+        <div class="xem-phim">
+          <div class="phim-icon d-flex justify-content-center align-items-center">
+            <i class="fa fa-film" [routerLink]="['/chitietphim']" [queryParams]="{id:phim.MaPhim}"></i>
+          </div>
+        </div>
+        <a class="btn btn-warning khung-phim pl-5 pr-5 text-uppercase font-weight-bold" [routerLink]="['/chitietphim']" [queryParams]="{id:phim.MaPhim}">Xem chi tiết</a>
+
+
+      </div>
+    </div>
+
+
+  </div>
+</div>

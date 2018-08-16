@@ -1,0 +1,79 @@
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-lg-4 col-sm-12">
+            <form class="validate-form pt-5" #formDangKy="ngForm" (ngSubmit)="DangKy()">
+                <h3 class=" text-uppercase font-weight-bold text-secondary text-success text-center">
+                    ĐĂNG KÝ
+                </h3>
+
+                <!-- Tài khoản -->
+                <div class="form-group">
+                    <label for="Tài khoản" class="pb-0 mb-0 font-weight-light">Tài khoản:</label>
+                    <input type="text" class="form-control " id="TaiKhoan" name="TaiKhoan" placeholder="Vui lòng nhập tài khoản" [(ngModel)]="nguoiDung.TaiKhoan"
+                        #TaiKhoan="ngModel" [ngClass]="{'is-invalid': TaiKhoan.errors && TaiKhoan.touched}" required minlength="6">
+
+                    <div [hidden]="!TaiKhoan.errors?.required" class="invalid-feedback">
+                        <h6>Tài khoản không được để trống!</h6>
+                    </div>
+                    <div [hidden]="!TaiKhoan.errors?.minlength" class="invalid-feedback">
+                        <h6>Tài khoản phải có ít nhất 6 ký tự!</h6>
+                    </div>
+                </div>
+
+                <!-- Họ tên -->
+                <div class="form-group">
+                    <label for="HoTen" class="pb-0 mb-0 font-weight-light">Họ tên:</label>
+                    <input type="text" class="form-control " id="HoTen" name="HoTen" placeholder="Vui lòng nhập họ tên" [(ngModel)]="nguoiDung.HoTen"
+                        #HoTen="ngModel" [ngClass]="{'is-invalid': HoTen.errors && HoTen.touched}" required>
+
+                    <div [hidden]="!HoTen.errors?.required" class="invalid-feedback">
+                        <h6>Họ tên không được để trống!</h6>
+                    </div>
+                </div>
+
+                <!-- Mật khẩu -->
+                <div class="form-group">
+                    <label for="MatKhau" class="pb-0 mb-0 font-weight-light">Mật khẩu:</label>
+                    <input type="password" class="form-control " id="MatKhau" name="MatKhau" placeholder="Mật khẩu" [(ngModel)]="nguoiDung.MatKhau"
+                        #MatKhau="ngModel" [ngClass]="{'is-invalid': MatKhau.errors && MatKhau.touched}" required minlength="8">
+
+                    <div [hidden]="!MatKhau.errors?.required" class="invalid-feedback">
+                        <h6>Mật khẩu không được để trống!</h6>
+                    </div>
+                    <div [hidden]="!MatKhau.errors?.minlength" class="invalid-feedback">
+                        <h6>Mật khẩu phải có ít nhất 8 ký tự!</h6>
+                    </div>
+                </div>
+
+                <!-- Nhập lại mật khẩu -->
+                <div class="form-group">
+        
+                    <input type="password" class="form-control " id="MatKhauNhapLai" name="MatKhauNhapLai" placeholder="Nhập lại mật khẩu"
+                        [(ngModel)]="matKhauNhapLai" #MatKhauNhapLai="ngModel" [ngClass]="{'is-invalid': MatKhauNhapLai.touched && (MatKhauNhapLai.errors || MatKhauNhapLai.value != MatKhau.value) }"
+                        required minlength="8">
+
+                    <div [hidden]="!MatKhauNhapLai.errors?.required" class="invalid-feedback">
+                        <h6>Mật khẩu không được để trống!</h6>
+                    </div>
+                    <div [hidden]="!MatKhauNhapLai.errors?.minlength" class="invalid-feedback">
+                        <h6>Mật khẩu phải có ít nhất 8 ký tự!</h6>
+                    </div>
+                    <div [hidden]="MatKhauNhapLai.value == MatKhau.value " class="invalid-feedback">
+                        <h6>Mật khẩu nhập lại không đúng!</h6>
+                    </div>
+                </div>
+
+                <div class="text-center pt-3">
+                    <button class="btn btn-success" [disabled]="(!formDangKy.form.valid) || (MatKhauNhapLai.value != MatKhau.value)">
+                        Đăng ký
+                    </button>
+                </div>
+
+                <div class="text-center pt-3">
+                    <span class="">Đã có tài khoản?</span>
+                    <a [routerLink]="['/dangnhap']" class="text-warning">Đăng nhập tại đây!</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+.ghe{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    background: none;
+    border-radius: 5px;
+    margin: 5px;
+}
+.gheChuaDat{
+
+    background-color: aliceblue;
+
+}
+.gheDangDat{
+
+    background-color: green;
+
+}
+.gheDaDat{
+    background-color: firebrick;
+    cursor: no-drop;
+}

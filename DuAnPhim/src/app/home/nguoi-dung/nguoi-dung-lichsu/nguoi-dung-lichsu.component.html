@@ -1,0 +1,24 @@
+<div class="">
+  <table class="table table-hover table-striped">
+    <thead class="thead-dark">
+      <th>Phim</th>
+      <th>Ngày đặt</th>
+      <th>Rạp</th>
+      <th>Mã ghế</th>
+      <th>Giá vé</th>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let ls of lichSu | paginate: { itemsPerPage: 5, currentPage: page}">
+        <td>{{ls.TenPhim}}</td>
+        <td>{{ls.NgayDat | date: "dd/MM/yyyy hh:mm a"}}</td>
+        <td>{{ls.Rap}}</td>
+        <td>{{ls.MaGhe}}</td>
+        <td>{{ls.GiaVe | number: ".0"}} VNĐ</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <pagination-controls (pageChange)="page=$event" [previousLabel]="'Trước'" [nextLabel]="'Sau'" [maxSize]="5" class="text-right">
+  </pagination-controls>
+</div>

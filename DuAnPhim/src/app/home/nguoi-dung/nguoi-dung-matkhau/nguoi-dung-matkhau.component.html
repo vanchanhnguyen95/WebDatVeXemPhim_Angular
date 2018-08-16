@@ -1,0 +1,66 @@
+<div class="">
+
+  <form #formDoiMatKhau="ngForm" (ngSubmit)="DoiMatKhau()">
+
+    <div class="form-group">
+
+      <!-- Mật khẩu -->
+      <div class="form-group">
+        <label for="MatKhau">Mật khẩu cũ</label>
+        <input type="password" class="form-control" id="MatKhau" name="MatKhau" placeholder="Mật khẩu cũ" [(ngModel)]="matKhauHienTai"
+          #MatKhau="ngModel" [ngClass]="{'is-invalid': MatKhau.errors && MatKhau.touched}" required minlength="8">
+
+        <div [hidden]="!MatKhau.errors?.required" class="invalid-feedback">
+          <h6>Bạn chưa nhập Mật khẩu!</h6>
+        </div>
+        <div [hidden]="!MatKhau.errors?.minlength" class="invalid-feedback">
+          <h6>Mật khẩu phải có ít nhất 8 ký tự!</h6>
+        </div>
+      </div>
+
+      <!-- Mật khẩu mới -->
+      <div class="form-group">
+        <label for="MatKhauMoi">Mật khẩu mới</label>
+        <input type="password" class="form-control" id="MatKhauMoi" name="MatKhauMoi" placeholder="Mật khẩu mới" [(ngModel)]="matKhauMoi"
+          #MatKhauMoi="ngModel" [ngClass]="{'is-invalid': MatKhauMoi.errors && MatKhauMoi.touched}" required minlength="8">
+
+        <div [hidden]="!MatKhauMoi.errors?.required" class="invalid-feedback">
+          <h6>Bạn chưa nhập Mật khẩu!</h6>
+        </div>
+        <div [hidden]="!MatKhauMoi.errors?.minlength" class="invalid-feedback">
+          <h6>Mật khẩu phải có ít nhất 8 ký tự!</h6>
+        </div>
+      </div>
+
+      <!-- Nhập lại mật khẩu -->
+      <div class="form-group">
+        <label for="MatKhauNhapLai">Nhập lại mật khẩu</label>
+        <input type="password" class="form-control" id="MatKhauNhapLai" name="MatKhauNhapLai" placeholder="Nhập lại mật khẩu" [(ngModel)]="matKhauNhapLai"
+          #MatKhauNhapLai="ngModel" [ngClass]="{'is-invalid': (MatKhauNhapLai.errors && MatKhauNhapLai.touched) || (MatKhauNhapLai.touched && MatKhauNhapLai.value != MatKhauMoi.value)}"
+          required minlength="8">
+
+        <div [hidden]="!MatKhauNhapLai.errors?.required" class="invalid-feedback">
+          <h6>Bạn chưa nhập lại Mật khẩu!</h6>
+        </div>
+
+        <div [hidden]="!MatKhauNhapLai.errors?.minlength" class="invalid-feedback">
+          <h6>Mật khẩu phải có ít nhất 8 ký tự!</h6>
+        </div>
+
+        <div [hidden]="MatKhauNhapLai.value == MatKhauMoi.value" class="invalid-feedback">
+          <h6>Mật khẩu nhập lại không đúng!</h6>
+        </div>
+      </div>
+
+      <div [hidden]="matKhauNhapLai == matKhauMoi" class="invalid-feedback">
+        <h6>Mật khẩu nhập lại không đúng!</h6>
+      </div>
+
+      <!-- Buttons -->
+      <div class="form-group text-right">
+        <button [disabled]="(!formDoiMatKhau.form.valid) || (MatKhauNhapLai.value != MatKhauMoi.value)" type="submit" class="btn btn-warning">Xác nhận</button>
+      </div>
+    </div>
+  </form>
+
+</div>

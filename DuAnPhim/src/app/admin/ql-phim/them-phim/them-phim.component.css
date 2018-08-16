@@ -1,0 +1,18 @@
+.alert-danger{
+    font-size: 12px;
+}
+input.ng-touched{
+    border: 1px solid palevioletred;
+}
+input.ng-dirty
+{
+    border: 1px solid #eee;
+}
+
+input.ng-valid
+{
+    border: 1px solid green;
+}
+input.ng-invalid{
+    border: 1px solid red;
+}

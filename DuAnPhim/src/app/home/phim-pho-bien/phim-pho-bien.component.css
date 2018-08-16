@@ -1,0 +1,29 @@
+.col-3{
+    box-sizing: border-box;
+}
+.fa-star{
+    font-size: 20px;
+}
+.icon-khung{
+    position: relative;
+}
+.icon-xem{
+    font-size: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: rgba(0, 0, 0, 0.7);
+    line-height: 60px;
+    border-radius: 50%;
+    color: aliceblue;
+    display: none;
+    position: absolute;
+    top: 25%;
+    left: 32%;
+}
+
+.icon-khung:hover> .icon-xem{
+    display: block;
+}
+.icon-khung:hover> .icon-xem:hover{
+    color: rgba(206, 51, 93, 0.9);
+}

@@ -1,0 +1,10 @@
+<ng-container *ngIf="ghe.DaDat === false;else gheDaDat">
+  <button class="ghe" [ngClass]="{'gheChuaDat':!dangDat,'gheDangDat':dangDat}" (click)="DatGhe(dangDat,ghe)">{{ghe.TenGhe}}</button>
+
+</ng-container>
+<ng-content>
+
+</ng-content>
+<ng-template #gheDaDat>
+  <button class="ghe gheDaDat" disabled='disabled'>{{ghe.TenGhe}}</button>
+</ng-template>

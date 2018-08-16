@@ -1,0 +1,29 @@
+<div class="mb-1">
+  <button class="btn btn-success text-uppercase font-weight-bold"  [routerLink]="['/admin/themphim']">+ Thêm phim mới</button>
+</div>
+<table class="table table-striped font-weight-bold table-hover">
+  <thead class="thead-dark font-weight-bold">
+    <tr>
+      <th scope="col">STT</th>
+      <th scope="col">Tên phim</th>
+      <th scope="col">Ngày khởi chiếu</th>
+      <th scope="col">Đánh giá</th>
+      <th scope="col" style="width: 140px; height: auto;">Thao tác</th>
+    </tr>
+  </thead>
+  <tbody class="justify-content-center">
+    <tr *ngFor="let phim of DanhSachPhim | paginate: { itemsPerPage: 10, currentPage: p }, let i = index">
+      <td>{{ i + 1}}</td>
+      <td>{{ phim.TenPhim}}</td>
+      <td>{{ phim.NgayKhoiChieu | date : 'dd/MM/yyyy hh:mm' }}</td>
+      <td>{{ phim.DanhGia}}</td>
+      <td style="width: 140px; height: auto;">
+        <button class="btn btn-primary mr-0" [routerLink]="['/admin/capnhatphim']" [queryParams]="{id:phim.MaPhim}">Sửa</button>
+        <button class="btn btn-danger ml-0" (click)="XoaPhim(phim.MaPhim)">Xóa</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="d-flex ">
+  <div class="m-auto"><pagination-controls (pageChange)="p = $event" class="justify-content-between"></pagination-controls></div>
+</div>

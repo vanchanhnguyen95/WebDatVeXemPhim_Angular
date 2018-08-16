@@ -1,0 +1,46 @@
+<div class="container pb-5">
+    <div class="row justify-content-center">
+        <div class="col-7 bg-white">
+            <div class="justify-content-center text-center">
+                <a style="color: black; font-size: 30px;" class=" text-center font-weight-bold text-warning" [routerLink]="['/admin/capnhatphim']">
+                    <i class="fa fa-angellist mr-2 font-weight-bold"></i>Admin - CẬP NHẬT PHIM</a>
+            </div>
+            <form #fCapNhatPhim='ngForm' (ngSubmit)="CapNhatPhim(fCapNhatPhim.value, Image.files )" *ngIf="load" class="">
+                <div class="form-group">
+                    <label class="mb-0">Mã phim</label>
+                    <input type="text" name="MaPhim" id="" disabled class="form-control" placeholder="" #MaPhim="ngModel" ngModel="{{phim.MaPhim}}">
+                </div>
+                <div class="form-group">
+                    <label class="mb-0">Tên phim</label>
+                    <input type="text" name="TenPhim" id="" class="form-control" placeholder="" #TenPhim="ngModel" ngModel="{{phim.TenPhim}}">
+                </div>
+
+                <div class="form-group">
+                    <label class="mb-0">Mô tả</label>
+                    <textarea id="" name="MoTa" class="form-control" cols="30" rows="2" #MoTa="ngModel" ngModel="{{phim.MoTa}}"></textarea>
+
+                </div>
+                <div class="form-group">
+                    <label class="mb-0">Hình ảnh</label>
+                    <input #Image type="file" name="" id="" class="form-control" placeholder="">
+                </div>
+
+                <div class="form-group">
+                    <label class="mb-0">Trailer phim</label>
+                    <input type="text" name="Trailer" id="" class="form-control" placeholder="" #Trailer="ngModel" ngModel="{{phim.Trailer}}">
+                </div>
+
+                <div class="form-group">
+                    <label class="mb-0">Ngày khởi chiếu</label>
+                    <my-date-picker name="NgayKhoiChieu" id="NgayKhoiChieu" ngModel="{{phim.NgayKhoiChieu}}" #NgayKhoiChieu='ngModel'></my-date-picker>
+                    <!-- <input type="date" #date name="ReleaseDate" ngModel class="form-control"> -->
+                </div>
+                <div class="form-group">
+                    <label class="mb-0">Đánh giá</label>
+                    <input type="number" name="DanhGia" id="" class="form-control" placeholder="" #DanhGia="ngModel" ngModel="{{phim.DanhGia}}">
+                </div>
+                <button type="submit" class="btn btn-warning text-uppercase font-weight-bold form-control">Cập nhật phim</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="layout m-0 p-0">
+    <app-trangchu-header></app-trangchu-header>
+    <app-banner></app-banner>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h2 class="font-weight-bold text-uppercase text-white pt-5">
+                        <i class="fa fa-rocket pr-2 mau-icon pb-2"></i>PHIM THÁNG NÀY
+                    </h2>
+                    <div class="phim-thang">
+                        <ul class=" d-flex list-unstyled ">
+                            <li class="nav-item">
+                                <a class="nav-link active text-white text-uppercase font-weight-bold pr-2" [routerLink]="['/trangchu']" id="lich-chieu">HAY NHẤT</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white text-uppercase font-weight-bold" [routerLink]="['/phobien']">PHỔ BIẾN</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <app-top-phim></app-top-phim>
+
+    <section id="tin-tuc">
+        <app-tin-tuc-phim></app-tin-tuc-phim>
+    </section>
+
+    <app-footer></app-footer>
+</div>
